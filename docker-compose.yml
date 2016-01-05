@@ -1,0 +1,16 @@
+nginx:
+    build: ./nginx
+    ports: 
+        - "80:80"
+        - "443:443"
+    volumes_from:
+        - fpm        
+    links:
+        - fpm 
+fpm:
+    build: ./php-fpm
+    volumes:
+        - ./src/:/var/www/site/public
+
+
+    
